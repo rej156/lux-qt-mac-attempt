@@ -202,7 +202,6 @@ private slots:
     void aboutClicked();
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */
-    void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 #endif
     /** Show incoming transaction notification for new transactions.
 
