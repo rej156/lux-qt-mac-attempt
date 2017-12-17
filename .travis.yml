@@ -1,5 +1,4 @@
 os: osx
- compiler: gcc
 
 # install:
 #   # set columns in terminal, required for curl to work correctly:
