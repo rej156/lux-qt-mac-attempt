@@ -3,21 +3,20 @@ cache:
   directories:
   - $HOME/.macports-ci-ccache
 
-install:
-  # set columns in terminal, required for curl to work correctly:
-  - export COLUMNS=80
-  - wget https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
-  - chmod +x ./macports-ci
-  - ./macports-ci install
-  - export PATH=/opt/local/bin:$PATH
-  - ./macports-ci ccache
-  - ./macports-ci localports "$PWD"
+# install:
+#   # set columns in terminal, required for curl to work correctly:
+#   - export COLUMNS=80
+#   - wget https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
+#   - chmod +x ./macports-ci
+#   - ./macports-ci install
+#   - export PATH=/opt/local/bin:$PATH
+#   - ./macports-ci ccache
+#   - ./macports-ci localports "$PWD"
 
 script:
 # - travis_wait 30 sudo port install 
-#  -  do something
   - brew install autoconf automake libtool boost openssl pkg-config protobuf qt@5.5 qrencode
-  - echo 'export PATH="$(brew --prefix qt@5.5)/bin:$PATH"' >> ~/.bashrc
+  - brew link qt@5.5 --force
   - qmake
-  - make -m macosx-version-min=10.7 -arch x86_64
-  - ./macports-ci ccache --save
+  - make
+  # - ./macports-ci ccache --save
