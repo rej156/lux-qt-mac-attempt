@@ -16,7 +16,8 @@ install:
 script:
 # - travis_wait 30 sudo port install 
 #  -  do something
-  - brew install autoconf automake libtool boost openssl pkg-config protobuf qt qrencode
+  - brew install autoconf automake libtool boost openssl pkg-config protobuf qt@5.5 qrencode
+  - echo 'export PATH="$(brew --prefix qt@5.5)/bin:$PATH"' >> ~/.bashrc
   - qmake
-  - make -mmacosx-version-min=10.7 -arch x86_64
+  - make -m macosx-version-min=10.7 -arch x86_64
   - ./macports-ci ccache --save
