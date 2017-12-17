@@ -3,9 +3,7 @@ cache:
   directories:
   - $HOME/.macports-ci-ccache
 
-install:
-  - brew install autoconf automake libtool boost openssl pkg-config protobuf qt@5.5 qrencode berkeley-db@4
-  - brew link qt@5.5 --force
+# install:
 #   # set columns in terminal, required for curl to work correctly:
 #   - export COLUMNS=80
 #   - wget https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
@@ -17,6 +15,8 @@ install:
 
 script:
 # - travis_wait 30 sudo port install 
+  - brew install autoconf automake libtool boost openssl pkg-config protobuf qt@5.5 qrencode berkeley-db@4
+  - brew link qt@5.5 --force
   - qmake
   - make
   # - ./macports-ci ccache --save
